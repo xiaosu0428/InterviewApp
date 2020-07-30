@@ -1,0 +1,1134 @@
+<resources>
+    <!-- ***************************** 1.应用程序 *****************************************-->
+    <string name="app_name">面试通</string>
+
+    <!-- ****************************** 自定义控件****************************************-->
+    <string name="customview_title_default">标题</string>
+
+    <!-- **********************************2 .页面 *****************************************-->
+    <!-- 登录页面 login-->
+    <string name="login_accountHint">请输入11位手机号码</string>
+    <string name="login_registerLink">注册</string>
+    <string name="login_verificationCode">验证码登录</string>
+    <string name="contentDescription">TODO</string>
+    <string name="login_title">LOGIN</string>
+    <string name="login_pswHint">请输入密码</string>
+    <string name="login_btnLogin">登录</string>
+    <string name="login_tvForgot">忘记密码？</string>
+    <!-- 注册页面 register-->
+    <string name="register_title">REGISTER</string>
+    <string name="register_accountHint">请输入11位手机号</string>
+    <string name="register_pswHint">请输入6~16位密码</string>
+    <string name="register_pswConfirmHint">请确认密码</string>
+    <string name="register_btnRegister">注册</string>
+    <!-- 导航栏 navigation-->
+    <string name="menu_navigation_home">首页</string>
+    <string name="menu_navigation_more">分类</string>
+    <string name="menu_navigation_customize">题目</string>
+    <string name="menu_navigation_my">我的</string>
+    <!-- 编辑我的问题 MyQuestion-->
+    <string name="mq_title">标题</string>
+    <string name="mq_category">门类</string>
+    <string name="mq_subject">学科</string>
+    <string name="mq_major">专业</string>
+
+    <!--  ************************************  3.内容相关*******************************-->
+
+    <!-- ***********   3.1 门类 ************-->
+    <string name="philosophy">哲学</string>
+    <string name="economics">经济学</string>
+    <string name="law">法学</string>
+    <string name="education">教育学</string>
+    <string name="history">历史学</string>
+    <string name="literature">文学</string>
+    <string name="lixue">理学</string>
+    <string name="engineering">工学</string>
+    <string name="agronomy">农学</string>
+    <string name="medical">医学</string>
+    <string name="management">管理学</string>
+    <string name="military">军事学</string>
+    <string name="art">艺术学</string>
+
+    <string-array name="category_science">
+        <item>哲学</item>
+        <item>经济学</item>
+        <item>法学</item>
+        <item>教育学</item>
+        <item>历史学</item>
+        <item>文学</item>
+        <item>理学</item>
+        <item>工学</item>
+        <item>农学</item>
+        <item>医学</item>
+        <item>管理学</item>
+        <item>军事学</item>
+        <item>艺术学</item>
+    </string-array>
+
+    <string-array name="category_speciality">
+        <item>经济学</item>
+        <item>法学</item>
+        <item>教育学</item>
+        <item>历史学</item>
+        <item>文学</item>
+        <item>工学</item>
+        <item>农学</item>
+        <item>医学</item>
+        <item>管理学</item>
+        <item>军事学</item>
+        <item>艺术学</item>
+    </string-array>
+
+    <!-- ***********   3.2 学科 ************-->
+    <!-- 3.2.1 学科-学硕  -->
+    <!--    哲学-->
+    <string-array name="x_philosophy">
+        <item>哲学</item>
+    </string-array>
+    <!--    经济学-->
+    <string-array name="x_economics">
+        <item>理论经济学</item>
+        <item>应用经济学</item>
+        <item>统计学</item>
+    </string-array>
+    <!--    法学-->
+    <string-array name="x_law">
+        <item>法学</item>
+        <item>政治学</item>
+        <item>社会学</item>
+        <item>民族学</item>
+        <item>马克思主义理论</item>
+        <item>公安学</item>
+    </string-array>
+    <!--    教育学-->
+    <string-array name="x_education">
+        <item>教育学</item>
+        <item>心理学</item>
+        <item>体育学</item>
+    </string-array>
+    <!--    历史学-->
+    <string-array name="x_history">
+        <item>考古学</item>
+        <item>中国史</item>
+        <item>世界史</item>
+    </string-array>
+    <!--    文学-->
+    <string-array name="x_literature">
+        <item>中国语言文学</item>
+        <item>外国语言文学</item>
+        <item>新闻传播学</item>
+    </string-array>
+    <!--    理学-->
+    <string-array name="x_lixue">
+        <item>数学</item>
+        <item>物理学</item>
+        <item>化学</item>
+        <item>天文学</item>
+        <item>地理学</item>
+        <item>大气科学</item>
+        <item>海洋科学</item>
+        <item>地球物理学</item>
+        <item>地质学</item>
+        <item>生物学</item>
+        <item>系统科学</item>
+        <item>科学技术史</item>
+        <item>生态学</item>
+        <item>统计学</item>
+        <item>心理学</item>
+        <item>力学</item>
+        <item>材料科学与工程</item>
+        <item>电子科学与技术</item>
+        <item>计算机科学与技术</item>
+        <item>环境科学与工程</item>
+        <item>生物医学工程</item>
+        <item>基础医学</item>
+        <item>公共卫生与预防医学</item>
+        <item>药学</item>
+        <item>中药学</item>
+        <item>医学技术</item>
+        <item>护理学</item>
+    </string-array>
+    <!--    工学-->
+    <string-array name="x_engineering">
+        <item>力学</item>
+        <item>机械工程</item>
+        <item>光学工程</item>
+        <item>仪器科学与技术</item>
+        <item>材料科学与工程</item>
+        <item>冶金工程</item>
+        <item>动力工程及工程热物理</item>
+        <item>电气工程</item>
+        <item>电子科学与技术</item>
+        <item>信息与通信工程</item>
+        <item>控制科学与工程</item>
+        <item>计算机科学与技术</item>
+        <item>建筑学</item>
+        <item>土木工程</item>
+        <item>水利工程</item>
+        <item>测绘科学与技术</item>
+        <item>化学工程与技术</item>
+        <item>地质资源与地质工程</item>
+        <item>矿业工程</item>
+        <item>石油与天然气工程</item>
+        <item>纺织科学与工程</item>
+        <item>轻工技术与工程</item>
+        <item>交通运输工程</item>
+        <item>船舶与海洋工程 </item>
+        <item>航空宇航科学与技术</item>
+        <item>兵器科学与技术</item>
+        <item>核科学与技术</item>
+        <item>农业工程</item>
+        <item>林业工程</item>
+        <item>环境科学与工程</item>
+        <item>生物医学工程</item>
+        <item>食品科学与工程</item>
+        <item>城乡规划学</item>
+        <item>风景园林学</item>
+        <item>软件工程</item>
+        <item>生物工程</item>
+        <item>安全科学与工程</item>
+        <item>公安技术</item>
+        <item>网络空间安全</item>
+        <item>科学技术史</item>
+        <item>管理科学与工程</item>
+        <item>设计学</item>
+    </string-array>
+    <!--    农学-->
+    <string-array name="x_agronomy">
+        <item>作物学</item>
+        <item>园艺学</item>
+        <item>农业资源与环境</item>
+        <item>植物保护</item>
+        <item>畜牧学</item>
+        <item>兽医学</item>
+        <item>林学</item>
+        <item>水产</item>
+        <item>草学</item>
+        <item>科学技术史</item>
+        <item>环境科学与工程</item>
+        <item>食品科学与工程</item>
+        <item>风景园林学</item>
+    </string-array>
+    <!--    医学-->
+    <string-array name="x_medical">
+        <item>基础医学</item>
+        <item>临床医学</item>
+        <item>口腔医学</item>
+        <item>公共卫生与预防医学</item>
+        <item>中医学</item>
+        <item>中西医结合</item>
+        <item>药学</item>
+        <item>中药学</item>
+        <item>特种医学</item>
+        <item>医学技术</item>
+        <item>护理学</item>
+        <item>科学技术史</item>
+        <item>生物医学工程</item>
+    </string-array>
+    <!--    管理学-->
+    <string-array name="x_management">
+        <item>管理科学与工程</item>
+        <item>工商管理</item>
+        <item>农林经济管理</item>
+        <item>公共管理</item>
+        <item>图书情报与档案管理</item>
+    </string-array>
+    <!--    军事学-->
+    <string-array name="x_military">
+        <item>军事思想及军事历史</item>
+        <item>战略学</item>
+        <item>战役学</item>
+        <item>战术学</item>
+        <item>军队指挥学</item>
+        <item>军制学</item>
+        <item>军队政治工作学</item>
+        <item>军事后勤学</item>
+        <item>军事装备学</item>
+        <item>军事训练学</item>
+    </string-array>
+    <!--    艺术学-->
+    <string-array name="x_art">
+        <item>艺术学理论</item>
+        <item>音乐与舞蹈学</item>
+        <item>戏剧与影视学</item>
+        <item>美术学</item>
+        <item>设计学</item>
+    </string-array>
+
+    <!-- 3.2.2 学科-专硕  -->
+
+
+    <!-- ***********   3.3 专业-学硕 ************-->
+    <!-- 1 哲学-->
+    <string-array name="XPhilosophy">
+        <item>哲学</item>
+        <item>马克思主义哲学</item>
+        <item>中国哲学</item>
+        <item>外国哲学</item>
+        <item>逻辑学</item>
+        <item>伦理学</item>
+        <item>美学</item>
+        <item>宗教学</item>
+        <item>科学技术哲学</item>
+    </string-array>
+
+    <!-- 2 经济学-->
+    <string-array name="XTheoreticalEconomics">
+        <item>理论经济学</item>
+        <item>政治经济学</item>
+        <item>经济思想史</item>
+        <item>经济史</item>
+        <item>西方经济学</item>
+        <item>世界经济</item>
+        <item>人口、资源与环境经济学</item>
+    </string-array>
+    <string-array name="XAppliedEconomics">
+        <item>应用经济学</item>
+        <item>国民经济学</item>
+        <item>区域经济学</item>
+        <item>财政学</item>
+        <item>金融学</item>
+        <item>产业经济学</item>
+        <item>国际贸易学</item>
+        <item>劳动经济学</item>
+        <item>统计学</item>
+        <item>数量经济学</item>
+        <item>国防经济</item>
+    </string-array>
+    <string-array name="XStatistics">
+        <item>统计学</item>
+    </string-array>
+
+    <!-- 3 法学-->
+    <string-array name="XLaw">
+        <!--        法学-->
+        <item>法学</item>
+        <item>法学理论</item>
+        <item>法律史</item>
+        <item>宪法学与行政法学</item>
+        <item>刑法学</item>
+        <item>民商法学</item>
+        <item>诉讼法学</item>
+        <item>经济法学</item>
+        <item>环境与资源保护法学</item>
+        <item>国际法学</item>
+        <item>军事法学</item>
+    </string-array>
+    <string-array name="XPoliticalScience">
+        <!--        政治学-->
+        <item>政治学</item>
+        <item>政治学理论</item>
+        <item>中外政治制度</item>
+        <item>科学社会主义与国际共产主义运动</item>
+        <item>中共党史</item>
+        <item>国际政治</item>
+        <item>国际关系</item>
+        <item>外交学</item>
+    </string-array>
+    <string-array name="XSociology">
+        <!--        社会学-->
+        <item>社会学</item>
+        <item>社会学</item>
+        <item>人口学</item>
+        <item>人类学</item>
+        <item>民俗学</item>
+    </string-array>
+    <string-array name="XEthnology">
+        <!--        民族学-->
+        <item>民族学</item>
+        <item>马克思主义民族理论与政策</item>
+        <item>中国少数民族经济</item>
+        <item>中国少数民族史</item>
+        <item>中国少数民族艺术</item>
+    </string-array>
+    <string-array name="XMarxistTheory">
+        <!--        马克思主义理论-->
+        <item>马克思主义理论</item>
+        <item>马克思主义基本原理</item>
+        <item>马克思主义发展史</item>
+        <item>马克思主义中国化研究</item>
+        <item>国外马克思主义研究</item>
+        <item>思想政治教育</item>
+        <item>中国近现代史基本问题研究</item>
+    </string-array>
+    <string-array name="XPublicSecurity">
+        <item>公安学</item>
+    </string-array>
+
+    <!-- 4 教育学-->
+    <string-array name="XEducation">
+        <item>教育学</item>
+        <item>教育学原理</item>
+        <item>课程与教学论</item>
+        <item>教育史</item>
+        <item>比较教育学</item>
+        <item>学前教育学</item>
+        <item>高等教育学</item>
+        <item>成人教育学</item>
+        <item>职业技术教育学</item>
+        <item>特殊教育学</item>
+        <item>教育技术学</item>
+        <item>教育法学</item>
+    </string-array>
+    <string-array name="XPsychology">
+        <item>心理学</item>
+        <item>基础心理学</item>
+        <item>发展与教育心理学</item>
+        <item>应用心理学</item>
+    </string-array>
+    <string-array name="XPhysicalEducation">
+        <item>体育学</item>
+        <item>体育人文社会学</item>
+        <item>运动人体科学</item>
+        <item>体育教育训练学</item>
+        <item>民族传统体育学</item>
+    </string-array>
+
+    <!-- 5 历史学-->
+    <string-array name="XArchaeology">
+        <item>考古学及博物馆学</item>
+        <item>考古学</item>
+    </string-array>
+    <string-array name="XChineseHistory">
+        <item>史学理论及史学史</item>
+        <item>历史文献学（含∶敦煌学、古文字学）</item>
+        <item>专门史</item>
+        <item>中国古代史</item>
+        <item>中国近现代史</item>
+        <item>历史地理学</item>
+        <item>中国史</item>
+    </string-array>
+    <string-array name="XWorldHistory">
+        <item>世界史</item>
+    </string-array>
+
+    <!-- 6 文学-->
+    <string-array name="XChineseLanguageAndLiterature">
+        <item>中国语言文学</item>
+        <item>文艺学</item>
+        <item>语言学及应用语言学</item>
+        <item>汉语言文字学</item>
+        <item>中国古典文献学</item>
+        <item>中国古代文学</item>
+        <item>中国现当代文学</item>
+        <item>中国少数民族语言文学</item>
+        <item>比较文学与世界文学</item>
+    </string-array>
+    <string-array name="XForeignLanguageAndLiterature">
+        <item>外国语言文学</item>
+        <item>英语语言文学</item>
+        <item>俄语语言文学</item>
+        <item>法语语言文学</item>
+        <item>德语语言文学</item>
+        <item>日语语言文学</item>
+        <item>印度语言文学</item>
+        <item>西班牙语语言文学</item>
+        <item>阿拉伯语语言文学</item>
+        <item>欧洲语言文学</item>
+        <item>亚非语言文学</item>
+        <item>外国语言学及应用语言学</item>
+    </string-array>
+    <string-array name="XJournalismAndCommunication">
+        <item>新闻传播学</item>
+        <item>新闻学</item>
+        <item>传播学</item>
+    </string-array>
+
+    <!-- 7 理学-->
+    <string-array name="XMath">
+        <item>数学</item>
+        <item>基础数学</item>
+        <item>计算数学</item>
+        <item>概率论与数理统计</item>
+        <item>应用数学</item>
+        <item>运筹学与控制论</item>
+    </string-array>
+    <string-array name="XPhysics">
+        <item>物理学</item>
+        <item>理论物理</item>
+        <item>粒子物理与原子核物理</item>
+        <item>原子与分子物理</item>
+        <item>等离子体物理</item>
+        <item>凝聚态物理</item>
+        <item>声学</item>
+        <item>光学</item>
+        <item>无线电物理</item>
+    </string-array>
+    <string-array name="XChemistry">
+        <item>化学</item>
+        <item>无机化学</item>
+        <item>分析化学</item>
+        <item>有机化学</item>
+        <item>物理化学</item>
+        <item>高分子化学与物理</item>
+    </string-array>
+    <string-array name="XAstronomy">
+        <item>天文学</item>
+        <item>天体物理</item>
+        <item>天体测量与天体力学</item>
+    </string-array>
+    <string-array name="XGeography">
+        <item>地理学</item>
+        <item>自然地理学</item>
+        <item>人文地理学</item>
+        <item>地图学与地理信息系统</item>
+    </string-array>
+    <string-array name="XAtmosphericScience">
+        <item>大气科学</item>
+        <item>气象学</item>
+        <item>大气物理学与大气环境</item>
+    </string-array>
+    <string-array name="XMarineScience">
+        <item>海洋科学</item>
+        <item>物理海洋学</item>
+        <item>海洋化学</item>
+        <item>海洋生物学</item>
+        <item>海洋地质</item>
+    </string-array>
+    <string-array name="XGeophysics">
+        <item>地球物理学</item>
+        <item>固体地球物理学</item>
+        <item>空间物理学</item>
+    </string-array>
+    <string-array name="XGeology">
+        <item>地质学</item>
+        <item>矿物学、岩石学、矿床学</item>
+        <item>地球化学</item>
+        <item>古生物学与地层学</item>
+        <item>构造地质学</item>
+        <item>第四纪地质学</item>
+    </string-array>
+    <string-array name="XBiology">
+        <item>生物学</item>
+        <item>植物学</item>
+        <item>动物学</item>
+        <item>生理学</item>
+        <item>水生生物学</item>
+        <item>微生物学</item>
+        <item>神经生物学</item>
+        <item>遗传学</item>
+        <item>发育生物学</item>
+        <item>细胞生物学</item>
+        <item>生物化学与分子生物学</item>
+        <item>生物物理学</item>
+    </string-array>
+    <string-array name="XSystemScience">
+        <item>系统科学</item>
+        <item>系统理论</item>
+        <item>系统分析与集成</item>
+    </string-array>
+    <string-array name="XHistoryScienceTechnology">
+        <item>科学技术史</item>
+    </string-array>
+    <string-array name="XEcology">
+        <item>生态学</item>
+    </string-array>
+    <string-array name="XStatisticsMajor">
+        <item>统计学</item>
+    </string-array>
+    <string-array name="XPsychologyMajor">
+        <item>心理学</item>
+        <item>基础心理学</item>
+        <item>发展与教育心理学</item>
+        <item>应用心理学</item>
+    </string-array>
+    <string-array name="XDynamics">
+        <item>力学</item>
+        <item>一般力学与力学基础</item>
+        <item>固体力学</item>
+        <item>流体力学</item>
+        <item>工程力学</item>
+    </string-array>
+    <string-array name="XMaterialsScienceEngineering">
+        <item>材料科学与工程</item>
+        <item>材料物理与化学</item>
+        <item>材料学</item>
+        <item>材料加工工程</item>
+    </string-array>
+    <string-array name="XElectronicScienceTechnology">
+        <item>电子科学与技术</item>
+        <item>物理电子学</item>
+        <item>电路与系统</item>
+        <item>微电子学与固体电子学</item>
+        <item>电磁场与微波技术</item>
+    </string-array>
+    <string-array name="XComputerScienceTechnology">
+        <item>计算机科学与技术</item>
+        <item>计算机系统结构</item>
+        <item>计算机软件与理论</item>
+        <item>计算机应用技术</item>
+    </string-array>
+    <string-array name="XEnvironmentalScienceEngineering">
+        <item>环境科学与工程</item>
+        <item>环境科学</item>
+        <item>环境工程</item>
+    </string-array>
+    <string-array name="XBiomedicalEngineering">
+        <item>生物医学工程</item>
+    </string-array>
+    <string-array name="XBasicMedicine">
+        <item>基础医学</item>
+        <item>人体解剖与组织胚胎学</item>
+        <item>免疫学</item>
+        <item>病原生物学</item>
+        <item>病理学与病理生理学</item>
+        <item>法医学</item>
+        <item>放射医学</item>
+    </string-array>
+    <string-array name="XPublicHealthPreventiveMedicine">
+        <item>公共卫生与预防医学</item>
+        <item>流行病与卫生统计学</item>
+        <item>劳动卫生与环境卫生学</item>
+        <item>营养与食品卫生学</item>
+        <item>儿少卫生与妇幼保健学</item>
+        <item>卫生毒理学</item>
+        <item>军事预防医学</item>
+    </string-array>
+    <string-array name="XPharmacy">
+        <item>药学</item>
+        <item>药物化学</item>
+        <item>药剂学</item>
+        <item>生药学</item>
+        <item>药物分析学</item>
+        <item>微生物与生化药学</item>
+        <item>药理学</item>
+    </string-array>
+    <string-array name="XChineseMedicine">
+        <item>中药学</item>
+    </string-array>
+    <string-array name="XMedicalTechnology">
+        <item>医学技术</item>
+    </string-array>
+    <string-array name="XNursing">
+        <item>护理学</item>
+    </string-array>
+
+    <!-- 8 工学-->
+    <string-array name="XDynamics_G">
+        <item>力学</item>
+        <item>一般力学与力学基础</item>
+        <item>固体力学</item>
+        <item>流体力学</item>
+        <item>工程力学</item>
+    </string-array>
+    <string-array name="XMechanicalEngineering">
+        <item>机械工程</item>
+        <item>机械制造及其自动化</item>
+        <item>机械电子工程</item>
+        <item>机械设计及理论</item>
+        <item>车辆工程</item>
+    </string-array>
+    <string-array name="XOpticalEngineering">
+        <item>光学工程</item>
+    </string-array>
+    <string-array name="XInstrumentScienceTechnology">
+        <item>仪器科学与技术</item>
+        <item>精密仪器及机械</item>
+        <item>测试计量技术及仪器</item>
+    </string-array>
+    <string-array name="XMaterialsScienceEngineering_G">
+        <item>材料科学与工程</item>
+        <item>材料物理与化学</item>
+        <item>材料学</item>
+        <item>材料加工工程</item>
+    </string-array>
+    <string-array name="XMetallurgicalEngineering">
+        <item>冶金工程</item>
+        <item>冶金物理化学</item>
+        <item>钢铁冶金</item>
+        <item>有色金属冶金</item>
+    </string-array>
+    <string-array name="XPowerEngineeringThermoPhysics">
+        <item>动力工程及工程热物理</item>
+        <item>工程热物理</item>
+        <item>热能工程</item>
+        <item>动力机械及工程</item>
+        <item>流体机械及工程</item>
+        <item>制冷及低温工程</item>
+        <item>化工过程机械</item>
+    </string-array>
+    <string-array name="XElectricalEngineering">
+        <item>电气工程</item>
+        <item>电机与电器</item>
+        <item>电力系统及其自动化</item>
+        <item>高电压与绝缘技术</item>
+        <item>电力电子与电力传动</item>
+        <item>电工理论与新技术</item>
+    </string-array>
+    <string-array name="XElectronicScienceTechnology_G">
+        <item>电子科学与技术</item>
+        <item>物理电子学</item>
+        <item>电路与系统</item>
+        <item>微电子学与固体电子学</item>
+        <item>电磁场与微波技术</item>
+    </string-array>
+    <string-array name="XInformationCommunicationEngineering">
+        <item>信息与通信工程</item>
+        <item>通信与信息系统</item>
+        <item>信号与信息处理</item>
+    </string-array>
+    <string-array name="XControlScienceEngineering">
+        <item>控制科学与工程</item>
+        <item>控制理论与控制工程</item>
+        <item>检测技术与自动化装置</item>
+        <item>系统工程</item>
+        <item>模式识别与智能系统</item>
+        <item>导航、制导与控制</item>
+    </string-array>
+    <string-array name="XComputerScienceTechnology_G">
+        <item>计算机科学与技术</item>
+        <item>计算机系统结构</item>
+        <item>计算机软件与理论</item>
+        <item>计算机应用技术</item>
+    </string-array>
+    <string-array name="XArchitecture">
+        <item>建筑历史与理论</item>
+        <item>建筑学</item>
+        <item>建筑设计及其理论</item>
+        <item>建筑技术科学</item>
+    </string-array>
+    <string-array name="XCivilEngineering">
+        <item>土木工程</item>
+        <item>岩土工程</item>
+        <item>结构工程</item>
+        <item>市政工程</item>
+        <item>供热、供燃气、通风及空调工程</item>
+        <item>防灾减灾工程及防护工程</item>
+        <item>桥梁与隧道工程</item>
+    </string-array>
+    <string-array name="XWaterConservancyProject">
+        <item>水利工程</item>
+        <item>水文学及水资源</item>
+        <item>水力学及河流动力学</item>
+        <item>水工结构工程</item>
+        <item>水利水电工程</item>
+        <item>港口、海岸及近海工程</item>
+    </string-array>
+    <string-array name="XSurveyingMapping">
+        <item>测绘科学与技术</item>
+        <item>大地测量学与测量工程</item>
+        <item>摄影测量与遥感</item>
+        <item>地图制图学与地理信息工程</item>
+    </string-array>
+    <string-array name="XChemicalEngineeringTechnology">
+        <item>化学工程与技术</item>
+        <item>化学工程</item>
+        <item>化学工艺</item>
+        <item>生物化工</item>
+        <item>应用化学</item>
+        <item>工业催化</item>
+    </string-array>
+    <string-array name="XGeologicalResourcesGeologicalEngineering">
+        <item>地质资源与地质工程</item>
+        <item>矿产普查与勘探</item>
+        <item>地球探测与信息技术</item>
+        <item>地质工程</item>
+    </string-array>
+    <string-array name="XMineralEngineering">
+        <item>矿业工程</item>
+        <item>采矿工程</item>
+        <item>矿物加工工程</item>
+        <item>安全技术及工程</item>
+    </string-array>
+    <string-array name="XOilGasEngineering">
+        <item>石油与天然气工程</item>
+        <item>油气井工程</item>
+        <item>油气田开发工程</item>
+        <item>油气储运工程</item>
+    </string-array>
+    <string-array name="XTextileScienceEngineering">
+        <item>纺织科学与工程</item>
+        <item>纺织工程</item>
+        <item>纺织材料与纺织品设计</item>
+        <item>纺织化学与染整工程</item>
+        <item>服装设计与工程</item>
+    </string-array>
+    <string-array name="XLightIndustryTechnologyEngineering">
+        <item>轻工技术与工程</item>
+        <item>制浆造纸工程</item>
+        <item>制糖工程</item>
+        <item>发酵工程</item>
+        <item>皮革化学与工程</item>
+    </string-array>
+    <string-array name="XTransportationEngineering">
+        <item>交通运输工程</item>
+        <item>道路与铁道工程</item>
+        <item>交通信息工程及控制</item>
+        <item>交通运输规划与管理</item>
+        <item>载运工具运用工程</item>
+    </string-array>
+    <string-array name="XShipsMarineEngineering">
+        <item>船舶与海洋工程</item>
+        <item>船舶与海洋结构物设计制造</item>
+        <item>轮机工程</item>
+        <item>水声工程</item>
+    </string-array>
+    <string-array name="XAerospaceScienceTechnology">
+        <item>航空宇航科学与技术</item>
+        <item>飞行器设计</item>
+        <item>航空宇航推进理论与工程</item>
+        <item>航空宇航制造工程</item>
+        <item>人机与环境工程</item>
+    </string-array>
+    <string-array name="XArmamentScienceTechnology_G">
+        <item>兵器科学与技术</item>
+        <item>武器系统与运用工程</item>
+        <item>兵器发射理论与技术</item>
+        <item>火炮、自动武器与弹药工程</item>
+        <item>军事化学与烟火技术</item>
+    </string-array>
+    <string-array name="XNuclearScienceTechnology">
+        <item>核科学与技术</item>
+        <item>核能科学与工程</item>
+        <item>核燃料循环与材料</item>
+        <item>核技术及应用</item>
+        <item>辐射防护及环境保护</item>
+    </string-array>
+    <string-array name="XAgriculturalEngineering">
+        <item>农业工程</item>
+        <item>农业机械化工程</item>
+        <item>农业水土工程</item>
+        <item>农业生物环境与能源工程</item>
+        <item>农业电气化与自动化</item>
+    </string-array>
+    <string-array name="XForestryEngineering">
+        <item>林业工程</item>
+        <item>森林工程</item>
+        <item>木材科学与技术</item>
+        <item>林产化学加工工程</item>
+    </string-array>
+    <string-array name="XEnvironmentalScienceEngineering_G">
+        <item>环境科学与工程</item>
+        <item>环境科学</item>
+        <item>环境工程</item>
+    </string-array>
+    <string-array name="XBiomedicalEngineering_G">
+        <item>生物医学工程</item>
+    </string-array>
+    <string-array name="XFoodScienceEngineering">
+        <item>食品科学与工程</item>
+        <item>食品科学</item>
+        <item>粮食、油脂及植物蛋白工程</item>
+        <item>农产品加工及贮藏工程</item>
+        <item>水产品加工及贮藏工程</item>
+    </string-array>
+    <string-array name="XUrbanRuralPlanning">
+        <item>城乡规划学</item>
+    </string-array>
+    <string-array name="XLandscapeArchitecture">
+        <item>风景园林学</item>
+    </string-array>
+    <string-array name="XSoftwareEngineering">
+        <item>软件工程</item>
+    </string-array>
+    <string-array name="XBioengineering">
+        <item>生物工程</item>
+    </string-array>
+    <string-array name="XSafetyScienceEngineering">
+        <item>安全科学与工程</item>
+    </string-array>
+    <string-array name="XPublicSecurityTechnology">
+        <item>公安技术</item>
+    </string-array>
+    <string-array name="XCyberspaceSecurity">
+        <item>网络空间安全</item>
+    </string-array>
+    <string-array name="XHistoryScienceTechnology_G">
+        <item>科学技术史</item>
+    </string-array>
+    <string-array name="XManagementScienceEngineering">
+        <item>管理科学与工程</item>
+    </string-array>
+    <string-array name="XDesignScience">
+        <item>设计学</item>
+    </string-array>
+
+    <!-- 9 农学-->
+    <string-array name="XCropScience">
+        <item>作物学</item>
+        <item>作物栽培学与耕作学</item>
+        <item>作物遗传育种</item>
+    </string-array>
+    <string-array name="XHorticulture">
+        <item>园艺学</item>
+        <item>果树学</item>
+        <item>蔬菜学</item>
+        <item>茶学</item>
+    </string-array>
+    <string-array name="XAgriculturalResourcesEnvironment">
+        <item>农业资源与环境</item>
+        <item>土壤学</item>
+        <item>植物营养学</item>
+    </string-array>
+    <string-array name="XPlantProtection">
+        <item>植物保护</item>
+        <item>植物病理学</item>
+        <item>农业昆虫与害虫防治</item>
+        <item>农药学</item>
+    </string-array>
+    <string-array name="XAnimalHusbandry">
+        <item>畜牧学</item>
+        <item>动物遗传育种与繁殖</item>
+        <item>动物营养与饲料科学</item>
+        <item>特种经济动物饲养</item>
+    </string-array>
+    <string-array name="XVeterinaryMedicine">
+        <item>兽医学</item>
+        <item>基础兽医学</item>
+        <item>预防兽医学</item>
+        <item>临床兽医学</item>
+    </string-array>
+    <string-array name="XForestry">
+        <item>林学</item>
+        <item>林木遗传育种</item>
+        <item>森林培育</item>
+        <item>森林保护学</item>
+        <item>森林经理学</item>
+        <item>野生动植物保护与利用</item>
+        <item>园林植物与观赏园艺</item>
+        <item>水土保持与荒漠化防治</item>
+    </string-array>
+    <string-array name="XAquaticProducts">
+        <item>水产</item>
+        <item>水产养殖</item>
+        <item>捕捞学</item>
+        <item>渔业资源</item>
+    </string-array>
+    <string-array name="XHerbalism">
+        <item>草学</item>
+    </string-array>
+    <string-array name="XHistoryScienceTechnology_N">
+        <item>科学技术史</item>
+    </string-array>
+    <string-array name="XEnvironmentalScienceEngineering_N">
+        <item>环境科学与工程</item>
+        <item>环境科学</item>
+        <item>环境工程</item>
+    </string-array>
+    <string-array name="XFoodScienceEngineering_N">
+        <item>食品科学与工程</item>
+        <item>食品科学</item>
+        <item>粮食、油脂及植物蛋白工程</item>
+        <item>农产品加工及贮藏工程</item>
+        <item>水产品加工及贮藏工程</item>
+    </string-array>
+    <string-array name="XLandscapeArchitecture_N">
+        <item>风景园林学</item>
+    </string-array>
+
+    <!-- 10 医学-->
+    <string-array name="XBasicMedicine_Y">
+        <item>基础医学</item>
+        <item>人体解剖与组织胚胎学</item>
+        <item>免疫学</item>
+        <item>病原生物学</item>
+        <item>病理学与病理生理学</item>
+        <item>法医学</item>
+        <item>放射医学</item>
+    </string-array>
+    <string-array name="XClinicalMedicine">
+        <item>临床医学</item>
+        <item>内科学</item>
+        <item>儿科学</item>
+        <item>老年医学</item>
+        <item>神经病学</item>
+        <item>精神病与精神卫生学</item>
+        <item>皮肤病与性病学</item>
+        <item>影像医学与核医学</item>
+        <item>临床检验诊断学</item>
+        <item>外科学</item>
+        <item>妇产科学</item>
+        <item>眼科学</item>
+        <item>耳鼻咽喉科学</item>
+        <item>肿瘤学</item>
+        <item>康复医学与理疗学</item>
+        <item>运动医学</item>
+        <item>麻醉学</item>
+        <item>急诊医学</item>
+    </string-array>
+    <string-array name="XStomatology">
+        <item>口腔医学</item>
+        <item>口腔基础医学</item>
+        <item>口腔临床医学</item>
+    </string-array>
+    <string-array name="XPublicHealthPreventiveMedicine_Y">
+        <item>公共卫生与预防医学</item>
+        <item>流行病与卫生统计学</item>
+        <item>劳动卫生与环境卫生学</item>
+        <item>营养与食品卫生学</item>
+        <item>儿少卫生与妇幼保健学</item>
+        <item>卫生毒理学</item>
+        <item>军事预防医学</item>
+    </string-array>
+    <string-array name="XTraditionalChineseMedicine">
+        <item>中医学</item>
+        <item>中医基础理论</item>
+        <item>中医临床基础</item>
+        <item>中医医史文献</item>
+        <item>方剂学</item>
+        <item>中医诊断学</item>
+        <item>中医内科学</item>
+        <item>中医外科学</item>
+        <item>中医骨伤科学</item>
+        <item>中医妇科学</item>
+        <item>中医儿科学</item>
+        <item>中医五官科学</item>
+        <item>针灸推拿学</item>
+        <item>民族医学（含：藏医学、蒙医学等）</item>
+    </string-array>
+    <string-array name="XIntegrationTraditionalChinesEWesternMedicine">
+        <item>中西医结合</item>
+        <item>中西医结合基础</item>
+        <item>中西医结合临床</item>
+    </string-array>
+    <string-array name="XPharmacy_Y">
+        <item>药学</item>
+        <item>药物化学</item>
+        <item>药剂学</item>
+        <item>生药学</item>
+        <item>药物分析学</item>
+        <item>微生物与生化药学</item>
+        <item>药理学</item>
+    </string-array>
+    <string-array name="XChineseMedicine_Y">
+        <item>中药学</item>
+    </string-array>
+    <string-array name="XSpecialMedicine">
+        <item>特种医学</item>
+    </string-array>
+    <string-array name="XMedicalTechnology_Y">
+        <item>医学技术</item>
+    </string-array>
+    <string-array name="XNursing_Y">
+        <item>护理学</item>
+    </string-array>
+    <string-array name="XHistoryScienceTechnology_Y">
+        <item>科学技术史</item>
+    </string-array>
+    <string-array name="XBiomedicalEngineering_Y">
+        <item>生物医学工程</item>
+    </string-array>
+
+
+    <!-- 11 军事学-->
+    <string-array name="XMilitaryThoughtMilitaryHistory">
+        <item>军事思想及军事历史</item>
+        <item>军事思想</item>
+        <item>军事历史</item>
+    </string-array>
+    <string-array name="XScienceStrategy">
+        <item>军种战略学</item>
+        <item>国防动员学</item>
+        <item>战略学</item>
+        <item>国家安全战略学</item>
+        <item>军事战略学</item>
+    </string-array>
+    <string-array name="XScienceCampaign">
+        <item>战役学</item>
+        <item>联合战役学</item>
+        <item>军种战役学</item>
+    </string-array>
+    <string-array name="XScienceTactics">
+        <item>兵种战术学</item>
+        <item>战术学</item>
+        <item>联合战术学</item>
+        <item>合同战术学</item>
+    </string-array>
+    <string-array name="XMilitaryCommand">
+        <item>军事密码学</item>
+        <item>非战争军事行动</item>
+        <item>军队指挥学</item>
+        <item>作战指挥学</item>
+        <item>作战环境学</item>
+        <item>军事运筹学</item>
+        <item>军事信息学</item>
+        <item>军事情报学</item>
+    </string-array>
+    <string-array name="XMilitarySystem">
+        <item>军事法制学</item>
+        <item>军事管理学</item>
+        <item>军事组织编制学</item>
+        <item>军队管理学</item>
+    </string-array>
+    <string-array name="XMilitaryPoliticalWork">
+        <item>军队政治工作学原理</item>
+        <item>部队政治工作学</item>
+        <item>政治机关工作学</item>
+        <item>军事任务政治工作</item>
+        <item>军队政治工作学</item>
+    </string-array>
+    <string-array name="XMilitaryLogistics">
+        <item>军事后勤建设学</item>
+        <item>军事物流学</item>
+        <item>军事后勤学</item>
+        <item>后方专业勤务</item>
+    </string-array>
+    <string-array name="XMilitaryEquipmentScience">
+        <item>军事装备论证学</item>
+        <item>军事装备实验学</item>
+        <item>军事装备采购学</item>
+        <item>军事装备保障学</item>
+        <item>军事装备管理学</item>
+        <item>军事装备学</item>
+    </string-array>
+    <string-array name="XMilitaryTraining">
+        <item>联合训练学</item>
+        <item>军兵种训练学</item>
+        <item>军事教育学</item>
+        <item>军事训练学</item>
+    </string-array>
+
+    <!-- 12 管理学-->
+    <string-array name="XManagementScienceEngineering_G">
+        <item>管理科学与工程</item>
+    </string-array>
+    <string-array name="XBusinessAdministration">
+        <item>工商管理</item>
+        <item>会计学</item>
+        <item>企业管理</item>
+        <item>旅游管理</item>
+        <item>技术经济及管理</item>
+    </string-array>
+    <string-array name="XAgriculturalForestryEconomicManagement">
+        <item>农林经济管理</item>
+        <item>农业经济管理</item>
+        <item>林业经济管理</item>
+    </string-array>
+    <string-array name="XPublicAdministration">
+        <item>公共管理</item>
+        <item>行政管理</item>
+        <item>社会医学与卫生事业管理</item>
+        <item>教育经济与管理</item>
+        <item>社会保障</item>
+        <item>土地资源管理</item>
+    </string-array>
+    <string-array name="XLibraryInformationArchivesManagement">
+        <item>图书情报与档案管理</item>
+        <item>图书馆学</item>
+        <item>情报学</item>
+        <item>档案学</item>
+    </string-array>
+
+    <!-- 13 艺术学-->
+    <string-array name="XArtTheory">
+        <item>艺术学</item>
+        <item>艺术学理论</item>
+    </string-array>
+    <string-array name="XMusicDance">
+        <item>音乐学</item>
+        <item>音乐与舞蹈学</item>
+    </string-array>
+    <string-array name="XDramaFilmTelevision">
+        <item>戏剧戏曲学</item>
+        <item>广播电视艺术学</item>
+        <item>戏剧与影视学</item>
+    </string-array>
+    <string-array name="XFineArts">
+        <item>美术学</item>
+    </string-array>
+    <string-array name="XDesign">
+        <item>设计艺术学</item>
+        <item>设计学</item>
+    </string-array>
+
+</resources>

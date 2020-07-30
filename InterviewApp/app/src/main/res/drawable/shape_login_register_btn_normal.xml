@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <!--登录界面输入框样式-->
+    <!--    颜色-->
+    <solid android:color="#323A47" />
+    <!--    角度-->
+    <corners android:radius="30dp" />
+</shape>

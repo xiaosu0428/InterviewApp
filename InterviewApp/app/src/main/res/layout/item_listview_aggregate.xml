@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_collectionIcon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@mipmap/logo_yellow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tv_collectionTitle"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/contentDescription" />
+
+    <TextView
+        android:id="@+id/tv_collectionTitle"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:text="默认"
+        android:gravity="center_vertical"
+        android:layout_marginStart="15dp"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/iv_collectionIcon"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_collectionCount"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:text="35题"
+        android:textSize="15sp"
+        android:gravity="center_vertical"
+        android:layout_marginStart="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/iv_collectionIcon"
+        app:layout_constraintTop_toBottomOf="@id/tv_collectionTitle"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

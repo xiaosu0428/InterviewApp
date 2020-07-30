@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:id="@+id/ll_type"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_type"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/shape_circle_tv_blue"
+            android:gravity="center"
+            android:text="学"
+            android:textColor="#FFF"
+            android:textSize="25sp" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tv_mqTitle"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:text="@string/mq_title"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@id/btn_menu"
+        app:layout_constraintStart_toEndOf="@id/ll_type"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btn_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:src="@mipmap/ic_more"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_mqTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/contentDescription" />
+
+    <!--时间-->
+    <TextView
+        android:id="@+id/tv_mqTime"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_gravity="end"
+        android:gravity="center_vertical"
+        android:text="2018-04-28 16:00"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ll_type"
+        app:layout_constraintTop_toBottomOf="@id/tv_mqTitle" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_mid"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginTop="5dp"
+        android:background="#FFFFFF"
+        android:orientation="horizontal"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        app:layout_constraintTop_toBottomOf="@id/ll_type">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <!--门类-->
+            <TextView
+                android:id="@+id/tv_mqCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:text="@string/mq_category" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/contentDescription"
+                android:src="@mipmap/ic_tip_back" />
+
+            <!--学科-->
+            <TextView
+                android:id="@+id/tv_mqSubject"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:maxLength="9"
+                android:text="@string/mq_subject" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/contentDescription"
+                android:src="@mipmap/ic_tip_back" />
+
+            <!--专业-->
+            <TextView
+                android:id="@+id/tv_mqMajor"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:maxLength="9"
+                android:text="@string/mq_major" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <TextView
+        android:id="@+id/tv_mqContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:ellipsize="end"
+        android:maxLines="5"
+        android:padding="5dp"
+        android:text="内容"
+        android:textColor="#000000"
+        app:layout_constraintTop_toBottomOf="@id/cl_mid" />
+</androidx.constraintlayout.widget.ConstraintLayout>

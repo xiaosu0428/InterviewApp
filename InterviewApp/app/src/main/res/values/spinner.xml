@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--1.分类-->
+    <string-array name="spinner_type">
+        <item>学术</item>
+        <item>专业</item>
+    </string-array>
+
+    <!-- 1.1学术门类-->
+    <string-array name="spinner_learning">
+        <item>哲学</item>
+        <item>经济学</item>
+        <item>法学</item>
+        <item>教育学</item>
+        <item>历史学</item>
+        <item>理学</item>
+        <item>工学</item>
+        <item>农学</item>
+        <item>医学</item>
+        <item>军事学</item>
+        <item>管理学</item>
+        <item>艺术学</item>
+    </string-array>
+
+
+    <!--1.2专业门类-->
+    <string-array name="spinner_major">
+        <item>经济学</item>
+        <item>法学</item>
+        <item>教育学</item>
+        <item>历史学</item>
+        <item>工学</item>
+        <item>农学</item>
+        <item>医学</item>
+        <item>军事学</item>
+        <item>管理学</item>
+        <item>艺术学</item>
+    </string-array>
+
+
+    <!--1.1.1学术门类学科-->
+    <string-array name="spinner_learning_subject">
+        <item>无</item>
+    </string-array>
+
+    <!--1.2.1专业门类学科-->
+    <string-array name="spinner_major_subject">
+        <item>无</item>
+    </string-array>
+
+    <!--1.1.1.1学术门类学科专业-->
+    <string-array name="spinner_learning_subject_major">
+        <item>无</item>
+    </string-array>
+
+    <!--1.2.1.1专业门类学科专业-->
+    <string-array name="spinner_major_subject_major">
+        <item>无</item>
+    </string-array>
+</resources>
