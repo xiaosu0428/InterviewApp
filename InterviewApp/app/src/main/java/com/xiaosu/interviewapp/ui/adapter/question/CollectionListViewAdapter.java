@@ -33,7 +33,10 @@ import java.util.Objects;
  */
 public class CollectionListViewAdapter extends BaseAdapter {
     private Dialog mDialog;
+    private Dialog renameDialog;
+    private Dialog cleanDialog;
     private Dialog deleteWarnDialog;
+
 
     private List<QCollection> mList = new ArrayList<>();
 
@@ -98,7 +101,7 @@ public class CollectionListViewAdapter extends BaseAdapter {
         cl_collection.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                showDialog(position);
+                initDialogView(position);
                 return true;
             }
         });
@@ -110,26 +113,28 @@ public class CollectionListViewAdapter extends BaseAdapter {
      * method：
      * desc: 长按收藏夹弹出对话框
      */
-    public void showDialog(int position) {
+    public void initDialogView(int position) {
         //1.创建一个Dialog对象，如果是AlertDialog对象的话，弹出的自定义布局四周会有一些阴影，效果不好
         mDialog = new Dialog(Objects.requireNonNull(mContext));
         mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE); //去除标题栏
+
         //2.填充布局
         LayoutInflater inflater = LayoutInflater.from(mContext);
         View dialogView = inflater.inflate(R.layout.dialog_question_operation_collection, null);
-        initDialogView(dialogView, position);
         mDialog.setContentView(dialogView);//将自定义布局设置进去
+
         //3.设置指定的宽高,如果不设置的话，弹出的对话框可能不会显示全整个布局，当然在布局中写死宽高也可以
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         Window window = mDialog.getWindow();
         lp.copyFrom(window.getAttributes());
         lp.width = WindowManager.LayoutParams.MATCH_PARENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        //注意要在Dialog show之后，再将宽高属性设置进去，才有效果
-        mDialog.show();
+        mDialog.show();//注意要在Dialog show之后，再将宽高属性设置进去，才有效果
         window.setAttributes(lp);
-        //设置点击其它地方不让消失弹窗
-        mDialog.setCancelable(true);
+
+        //4.其他设置
+        mDialog.setCancelable(true);//设置点击其它地方不让消失弹窗
+        setDialogListener(dialogView, position);
     }
 
     /*
@@ -138,7 +143,7 @@ public class CollectionListViewAdapter extends BaseAdapter {
      * method：
      * desc: 初始化对话框布局
      */
-    private void initDialogView(View view, final int position) {
+    private void setDialogListener(View view, final int position) {
         TextView tv_collectionName = view.findViewById(R.id.tv_collectionName);
         LinearLayout ll_rename = view.findViewById(R.id.ll_rename);
         LinearLayout ll_empty = view.findViewById(R.id.ll_empty);
@@ -148,22 +153,81 @@ public class CollectionListViewAdapter extends BaseAdapter {
         ll_rename.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showRenameDialog(position);//重命名
+                initRenameDialogView();//重命名
                 mDialog.dismiss();
             }
         });
         ll_empty.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //清空
-                Toast.makeText(mContext, "清空", Toast.LENGTH_SHORT).show();
+                initCleanDialogView(position);//清空
+                mDialog.dismiss();
             }
         });
         ll_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDeleteWarnDialog(position);//删除
+                initDeleteDialogView(position);//删除
                 mDialog.dismiss();
+            }
+        });
+    }
+
+    /**********************************************************************************************/
+
+    /*
+     * date: 2020/8/6
+     * author: xiao su
+     * method：
+     * desc: 清空收藏夹内容对话框
+     */
+    private void initCleanDialogView(int position) {
+        //1.创建一个Dialog对象
+        cleanDialog = new Dialog(Objects.requireNonNull(mContext));
+        cleanDialog.requestWindowFeature(Window.FEATURE_NO_TITLE); //去除标题栏
+
+        //2.填充布局
+        LayoutInflater inflater = LayoutInflater.from(mContext);//获得打气筒
+        View dialogView = inflater.inflate(R.layout.dialog_question_clean_collection, null);//塞入布局
+        cleanDialog.setContentView(dialogView);//按压打气筒
+
+
+        //3.设置指定的宽高（如果不设置的话，弹出的对话框可能不会显示全整个布局，当然在布局中写死宽高也可以）
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        Window window = cleanDialog.getWindow();
+        lp.copyFrom(window.getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        cleanDialog.show();//注意要在Dialog show之后，再将宽高属性设置进去，才有效果
+        window.setAttributes(lp);
+
+        //4.布局设置
+        cleanDialog.setCancelable(false); //设置点击其它地方不让消失弹窗
+        setCleanDialogListener(dialogView,position);//设置监听
+
+    }
+
+    /*
+     * date: 2020/8/6
+     * author: xiao su
+     * method：
+     * desc: 设置清空对话框监听
+     */
+    private void setCleanDialogListener(View dialogView,final int position) {
+        TextView tv_confirmDelete = dialogView.findViewById(R.id.delete_confirm);
+        TextView tv_cancelDelete = dialogView.findViewById(R.id.delete_cancel);
+        tv_confirmDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //清空
+                cleanDialog.dismiss();
+                Toast.makeText(mContext, "清空成功", Toast.LENGTH_SHORT).show();
+            }
+        });
+        tv_cancelDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cleanDialog.dismiss();
             }
         });
     }
@@ -172,32 +236,51 @@ public class CollectionListViewAdapter extends BaseAdapter {
      * date: 2020/8/6
      * author: xiao su
      * method：
+     * desc: 清空对话框
+     */
+    private void cleanCollection(int position) {
+
+
+    }
+
+    /**********************************************************************************************/
+
+    /*
+     * date: 2020/8/6
+     * author: xiao su
+     * method：
      * desc: 重命名对话框
      */
-    private void showRenameDialog(int position) {
-        //1.创建一个Dialog对象，如果是AlertDialog对象的话，弹出的自定义布局四周会有一些阴影，效果不好
-        mDialog = new Dialog(Objects.requireNonNull(mContext));
-        mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE); //去除标题栏
+    private void initRenameDialogView() {
+        //1.创建一个Dialog对象
+        renameDialog = new Dialog(Objects.requireNonNull(mContext));
+        renameDialog.requestWindowFeature(Window.FEATURE_NO_TITLE); //去除标题栏
         //2.填充布局
         LayoutInflater inflater = LayoutInflater.from(mContext);
         View dialogView = inflater.inflate(R.layout.dialog_question_rename_collection, null);
-        mDialog.setContentView(dialogView);//将自定义布局设置进去
-        //3.设置指定的宽高,如果不设置的话，弹出的对话框可能不会显示全整个布局，当然在布局中写死宽高也可以
+        renameDialog.setContentView(dialogView);
+
+        //3.设置指定的宽高
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-        Window window = mDialog.getWindow();
+        Window window = renameDialog.getWindow();
         lp.copyFrom(window.getAttributes());
         lp.width = WindowManager.LayoutParams.MATCH_PARENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        //注意要在Dialog show之后，再将宽高属性设置进去，才有效果
-        mDialog.show();
+        renameDialog.show();//注意要在Dialog show之后，再将宽高属性设置进去，才有效果
         window.setAttributes(lp);
-        //设置点击其它地方不让消失弹窗
-        mDialog.setCancelable(false);
-        //设置对话框内部按钮监听
-        setDialogListener(dialogView);
+
+        //4.其他设置
+        renameDialog.setCancelable(false);//设置点击其它地方不让消失弹窗
+        setRenameDialogListener(dialogView);//设置对话框内部按钮监听
     }
 
-    private void setDialogListener(View view) {
+    /*
+     * date: 2020/8/6
+     * author: xiao su
+     * method：
+     * desc: 设置重命名对话框监听
+     */
+    private void setRenameDialogListener(View view) {
         final EditText et_collectionName = view.findViewById(R.id.et_collectionName);
         TextView tv_confirm = view.findViewById(R.id.tv_confirm);
         TextView tv_cancel = view.findViewById(R.id.tv_cancel);
@@ -206,9 +289,9 @@ public class CollectionListViewAdapter extends BaseAdapter {
             public void onClick(View v) {
                 if (!"".equals(et_collectionName.getText().toString())) {
                     //重命名收藏夹
-
+                    renameCollection();
                     //关闭对话框
-                    mDialog.dismiss();
+                    renameDialog.dismiss();
                 } else {
                     Toast.makeText(mContext, "请为收藏夹命名", Toast.LENGTH_SHORT).show();
                 }
@@ -218,11 +301,22 @@ public class CollectionListViewAdapter extends BaseAdapter {
         tv_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mDialog.dismiss();
+                renameDialog.dismiss();
             }
         });
     }
 
+    /*
+     * date: 2020/8/6
+     * author: xiao su
+     * method：
+     * desc: 重命名收藏夹
+     */
+    private void renameCollection() {
+
+    }
+
+    /**********************************************************************************************/
 
     /*
      * date: 2020/7/30
@@ -230,35 +324,37 @@ public class CollectionListViewAdapter extends BaseAdapter {
      * method：
      * desc: 删除提醒对话框
      */
-    private void showDeleteWarnDialog(int position) {
-        //1.创建一个Dialog对象，如果是AlertDialog对象的话，弹出的自定义布局四周会有一些阴影，效果不好
+    private void initDeleteDialogView(int position) {
+        //1.创建一个Dialog对象
         deleteWarnDialog = new Dialog(Objects.requireNonNull(mContext));
         deleteWarnDialog.requestWindowFeature(Window.FEATURE_NO_TITLE); //去除标题栏
+
         //2.填充布局
         LayoutInflater inflater = LayoutInflater.from(mContext);
-        View dialogView = inflater.inflate(R.layout.dialog_warn_delete_collection, null);
-        initDeleteWarnDialogView(dialogView, position);
-        deleteWarnDialog.setContentView(dialogView);//将自定义布局设置进去
-        //3.设置指定的宽高,如果不设置的话，弹出的对话框可能不会显示全整个布局，当然在布局中写死宽高也可以
+        View dialogView = inflater.inflate(R.layout.dialog_question_delete_collection, null);
+        deleteWarnDialog.setContentView(dialogView);
+
+        //3.设置指定的宽高
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         Window window = deleteWarnDialog.getWindow();
         lp.copyFrom(window.getAttributes());
         lp.width = WindowManager.LayoutParams.MATCH_PARENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        //注意要在Dialog show之后，再将宽高属性设置进去，才有效果
-        deleteWarnDialog.show();
+        deleteWarnDialog.show();//注意要在Dialog show之后，再将宽高属性设置进去，才有效果
         window.setAttributes(lp);
-        //设置点击其它地方不让消失弹窗
+
+        //4.其他设置
         deleteWarnDialog.setCancelable(false);
+        setDeleteWarnDialogListener(dialogView, position);
     }
 
     /*
      * date: 2020/8/6
      * author: xiao su
      * method：
-     * desc: 初始化删除提醒对话框布局
+     * desc: 设置删除对话框监听
      */
-    private void initDeleteWarnDialogView(View dialogView, final int position) {
+    private void setDeleteWarnDialogListener(View dialogView, final int position) {
         TextView tv_confirmDelete = dialogView.findViewById(R.id.delete_confirm);
         TextView tv_cancelDelete = dialogView.findViewById(R.id.delete_cancel);
         tv_confirmDelete.setOnClickListener(new View.OnClickListener() {
