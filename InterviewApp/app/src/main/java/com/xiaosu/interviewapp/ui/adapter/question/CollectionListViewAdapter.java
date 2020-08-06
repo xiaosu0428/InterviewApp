@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -145,26 +146,83 @@ public class CollectionListViewAdapter extends BaseAdapter {
 
         tv_collectionName.setText(mList.get(position).getTitle());
         ll_rename.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(mContext,"重命名",Toast.LENGTH_SHORT).show();
-                }
+            @Override
+            public void onClick(View v) {
+                showRenameDialog(position);//重命名
+                mDialog.dismiss();
+            }
         });
         ll_empty.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext,"清空",Toast.LENGTH_SHORT).show();
+                //清空
+                Toast.makeText(mContext, "清空", Toast.LENGTH_SHORT).show();
             }
         });
         ll_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext,"删除",Toast.LENGTH_SHORT).show();
-                showDeleteWarnDialog(position);
+                showDeleteWarnDialog(position);//删除
                 mDialog.dismiss();
             }
         });
     }
+
+    /*
+     * date: 2020/8/6
+     * author: xiao su
+     * method：
+     * desc: 重命名对话框
+     */
+    private void showRenameDialog(int position) {
+        //1.创建一个Dialog对象，如果是AlertDialog对象的话，弹出的自定义布局四周会有一些阴影，效果不好
+        mDialog = new Dialog(Objects.requireNonNull(mContext));
+        mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE); //去除标题栏
+        //2.填充布局
+        LayoutInflater inflater = LayoutInflater.from(mContext);
+        View dialogView = inflater.inflate(R.layout.dialog_question_rename_collection, null);
+        mDialog.setContentView(dialogView);//将自定义布局设置进去
+        //3.设置指定的宽高,如果不设置的话，弹出的对话框可能不会显示全整个布局，当然在布局中写死宽高也可以
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        Window window = mDialog.getWindow();
+        lp.copyFrom(window.getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        //注意要在Dialog show之后，再将宽高属性设置进去，才有效果
+        mDialog.show();
+        window.setAttributes(lp);
+        //设置点击其它地方不让消失弹窗
+        mDialog.setCancelable(false);
+        //设置对话框内部按钮监听
+        setDialogListener(dialogView);
+    }
+
+    private void setDialogListener(View view) {
+        final EditText et_collectionName = view.findViewById(R.id.et_collectionName);
+        TextView tv_confirm = view.findViewById(R.id.tv_confirm);
+        TextView tv_cancel = view.findViewById(R.id.tv_cancel);
+        tv_confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!"".equals(et_collectionName.getText().toString())) {
+                    //重命名收藏夹
+
+                    //关闭对话框
+                    mDialog.dismiss();
+                } else {
+                    Toast.makeText(mContext, "请为收藏夹命名", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+        tv_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDialog.dismiss();
+            }
+        });
+    }
+
 
     /*
      * date: 2020/7/30
@@ -194,15 +252,21 @@ public class CollectionListViewAdapter extends BaseAdapter {
         deleteWarnDialog.setCancelable(false);
     }
 
+    /*
+     * date: 2020/8/6
+     * author: xiao su
+     * method：
+     * desc: 初始化删除提醒对话框布局
+     */
     private void initDeleteWarnDialogView(View dialogView, final int position) {
         TextView tv_confirmDelete = dialogView.findViewById(R.id.delete_confirm);
-        TextView tv_cancelDelete  = dialogView.findViewById(R.id.delete_cancel);
+        TextView tv_cancelDelete = dialogView.findViewById(R.id.delete_cancel);
         tv_confirmDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 deleteCollection(position);
                 deleteWarnDialog.dismiss();
-                Toast.makeText(mContext,"删除成功",Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "删除成功", Toast.LENGTH_SHORT).show();
             }
         });
         tv_cancelDelete.setOnClickListener(new View.OnClickListener() {
@@ -213,8 +277,14 @@ public class CollectionListViewAdapter extends BaseAdapter {
         });
     }
 
+    /*
+     * date: 2020/8/6
+     * author: xiao su
+     * method：
+     * desc: 删除收藏夹
+     */
     private void deleteCollection(int position) {
-        CreateDB createDB = new CreateDB(mContext,"Interview.db");
+        CreateDB createDB = new CreateDB(mContext, "Interview.db");
         MyDataBaseHelper myDataBaseHelper = createDB.getMyDataBaseHelper();
         QCollectionDao qCollectionDao = new QCollectionDao(myDataBaseHelper);
         QCollection qCollection = (QCollection) getItem(position);
@@ -222,4 +292,6 @@ public class CollectionListViewAdapter extends BaseAdapter {
         mList.remove(position);
         notifyDataSetChanged();
     }
+
+
 }
