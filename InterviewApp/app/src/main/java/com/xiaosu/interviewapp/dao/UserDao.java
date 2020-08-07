@@ -13,10 +13,10 @@ import java.util.List;
 
 public class UserDao implements Dao {
 
-    private SQLiteDatabase mSQLiteDatabase;
+    private MyDataBaseHelper mMyDataBaseHelper;
 
     public UserDao(MyDataBaseHelper myDataBaseHelper) {
-        mSQLiteDatabase = myDataBaseHelper.getWritableDatabase();//打开数据库
+        this.mMyDataBaseHelper = myDataBaseHelper;
     }
 
     /*
@@ -27,17 +27,22 @@ public class UserDao implements Dao {
      */
     @Override
     public void insert(ContentValues values) {
-        mSQLiteDatabase.insert("user", null, values);
-        mSQLiteDatabase.close();
+        SQLiteDatabase sqLiteDatabase = mMyDataBaseHelper.getWritableDatabase();//打开数据库
+
+        sqLiteDatabase.insert("user", null, values);
+        sqLiteDatabase.close();
     }
 
     @Override
     public void delete(String _id) {
+        SQLiteDatabase sqLiteDatabase = mMyDataBaseHelper.getWritableDatabase();//打开数据库
 
     }
 
+
     @Override
-    public void update() {
+    public void update(String _id, ContentValues values) {
+        SQLiteDatabase sqLiteDatabase = mMyDataBaseHelper.getWritableDatabase();//打开数据库
 
     }
 
@@ -49,7 +54,9 @@ public class UserDao implements Dao {
      */
     @Override
     public String query() {
-        Cursor cursor = mSQLiteDatabase.query("user", null, null, null, null, null, null);
+        SQLiteDatabase sqLiteDatabase = mMyDataBaseHelper.getWritableDatabase();//打开数据库
+
+        Cursor cursor = sqLiteDatabase.query("user", null, null, null, null, null, null);
         List<User> userList = new ArrayList<>();
         while (cursor.moveToNext()) {
             String user_id = cursor.getString(cursor.getColumnIndex("_id"));
@@ -62,15 +69,13 @@ public class UserDao implements Dao {
             String user_mail = cursor.getString(cursor.getColumnIndex("user_mail"));
             String user_motto = cursor.getString(cursor.getColumnIndex("user_motto"));
             String user_img = cursor.getString(cursor.getColumnIndex("user_img"));
-            User user = new User(user_id, user_account, user_psw, user_petName, user_name, user_sex, user_age, user_mail, user_motto,user_img);
+            User user = new User(user_id, user_account, user_psw, user_petName, user_name, user_sex, user_age, user_mail, user_motto, user_img);
             userList.add(user);
         }
         String json_user = new Gson().toJson(userList);
         cursor.close();
         return json_user;
     }
-
-
 
 
     /*
@@ -81,7 +86,9 @@ public class UserDao implements Dao {
      */
     @Override
     public String select(String arg) {
-        Cursor cursor = mSQLiteDatabase.query("user", null, "user_account = ?", new String[]{arg}, null, null, null);
+        SQLiteDatabase sqLiteDatabase = mMyDataBaseHelper.getWritableDatabase();//打开数据库
+
+        Cursor cursor = sqLiteDatabase.query("user", null, "user_account = ?", new String[]{arg}, null, null, null);
         String json_user = "";
         while (cursor.moveToNext()) {
             String user_id = cursor.getString(cursor.getColumnIndex("user_id"));
@@ -94,13 +101,12 @@ public class UserDao implements Dao {
             String user_mail = cursor.getString(cursor.getColumnIndex("user_mail"));
             String user_motto = cursor.getString(cursor.getColumnIndex("user_motto"));
             String user_img = cursor.getString(cursor.getColumnIndex("user_img"));
-            User user = new User(user_id, user_account, user_psw, user_petName, user_name, user_sex, user_age, user_mail, user_motto,user_img);
+            User user = new User(user_id, user_account, user_psw, user_petName, user_name, user_sex, user_age, user_mail, user_motto, user_img);
             json_user = new Gson().toJson(user);
         }
         cursor.close();
         return json_user;
     }
-
 
 
 }

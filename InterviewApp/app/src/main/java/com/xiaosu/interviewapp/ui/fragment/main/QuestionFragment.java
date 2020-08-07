@@ -104,7 +104,7 @@ public class QuestionFragment extends BaseFragment implements View.OnClickListen
     * method：
     * desc:加载收藏夹数据
     */
-    private void initCollectionDate() {
+    public void initCollectionDate() {
         CreateDB createDB = new CreateDB(getContext(), "Interview.db");
         MyDataBaseHelper myDataBaseHelper = createDB.getMyDataBaseHelper();
         mCollectionDao = new QCollectionDao(myDataBaseHelper);

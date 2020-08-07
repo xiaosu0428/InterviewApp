@@ -7,7 +7,7 @@ interface Dao {
 
     void delete(String _id);//根据_ID删除一条记录
 
-    void update();//更新记录
+    void update(String _id,ContentValues values);//更新记录
 
     String query();//查询所有记录，返回json
 

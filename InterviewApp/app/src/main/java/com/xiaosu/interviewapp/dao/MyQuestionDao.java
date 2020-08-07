@@ -12,32 +12,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyQuestionDao implements Dao {
-    private SQLiteDatabase mSQLiteDatabase;
+
+    private MyDataBaseHelper mMyDataBaseHelper;
 
     public MyQuestionDao(MyDataBaseHelper myDataBaseHelper) {
-        mSQLiteDatabase = myDataBaseHelper.getWritableDatabase();//打开数据库
+        this.mMyDataBaseHelper = myDataBaseHelper;
     }
 
     @Override
     public void insert(ContentValues values) {
-        mSQLiteDatabase.insert("my_question", null, values);
-        mSQLiteDatabase.close();
+        SQLiteDatabase sQLiteDatabase = mMyDataBaseHelper.getWritableDatabase();//打开数据库
+        sQLiteDatabase.insert("my_question", null, values);
+        sQLiteDatabase.close();//关闭数据库
     }
 
     @Override
     public void delete(String _id) {
-        mSQLiteDatabase.delete("my_question","_id=?",new String[]{_id});
-        mSQLiteDatabase.close();
+        SQLiteDatabase sqLiteDatabase = mMyDataBaseHelper.getWritableDatabase();//打开数据库
+        sqLiteDatabase.delete("my_question","_id=?",new String[]{_id});
+        sqLiteDatabase.close();
     }
 
     @Override
-    public void update() {
+    public void update(String _id, ContentValues values) {
+        SQLiteDatabase sqLiteDatabase = mMyDataBaseHelper.getWritableDatabase();//打开数据库
 
     }
 
     @Override
     public String query() {
-        Cursor cursor = mSQLiteDatabase.query("my_question", null, null, null, null, null, null);
+        SQLiteDatabase sqLiteDatabase = mMyDataBaseHelper.getWritableDatabase();//打开数据库
+        Cursor cursor = sqLiteDatabase.query("my_question", null, null, null, null, null, null);
         List<MyQuestion> myQuestionList = new ArrayList<>(0);
         while (cursor.moveToNext()) {
             String _id = cursor.getString(cursor.getColumnIndex("_id"));
@@ -57,7 +62,7 @@ public class MyQuestionDao implements Dao {
 
     @Override
     public String  select(String _id) {
-
+        SQLiteDatabase sqLiteDatabase = mMyDataBaseHelper.getWritableDatabase();//打开数据库
         return null;
     }
 }

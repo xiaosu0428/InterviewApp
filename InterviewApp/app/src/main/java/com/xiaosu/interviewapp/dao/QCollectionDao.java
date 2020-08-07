@@ -17,29 +17,32 @@ import java.util.List;
  * Description:
  */
 public class QCollectionDao implements Dao {
-
-    private SQLiteDatabase mSQLiteDatabase;
+    private MyDataBaseHelper mMyDataBaseHelper;
 
     public QCollectionDao(MyDataBaseHelper myDataBaseHelper) {
-        mSQLiteDatabase = myDataBaseHelper.getWritableDatabase();//打开数据库
+        this.mMyDataBaseHelper = myDataBaseHelper;
     }
 
 
     @Override
     public void insert(ContentValues values) {
-        mSQLiteDatabase.insert("collection",null,values);
-        mSQLiteDatabase.close();
+        SQLiteDatabase sqLiteDatabase = mMyDataBaseHelper.getWritableDatabase();
+        sqLiteDatabase.insert("collection",null,values);
+        sqLiteDatabase.close();
     }
 
     @Override
     public void delete(String _id) {
-        mSQLiteDatabase.delete("collection","_id=?",new String[]{_id});
-        mSQLiteDatabase.close();
+        SQLiteDatabase sqLiteDatabase = mMyDataBaseHelper.getWritableDatabase();
+        sqLiteDatabase.delete("collection","_id=?",new String[]{_id});
+        sqLiteDatabase.close();
     }
 
     @Override
-    public void update() {
-
+    public void update(String _id,ContentValues values) {
+        SQLiteDatabase sqLiteDatabase = mMyDataBaseHelper.getWritableDatabase();
+        sqLiteDatabase.update("collection",values,"_id = ?",new String[]{_id});
+        sqLiteDatabase.close();
     }
 
     /*
@@ -48,7 +51,8 @@ public class QCollectionDao implements Dao {
      */
     @Override
     public String query() {
-        Cursor cursor = mSQLiteDatabase.query("collection",null,null,null,null,null,null,null);
+        SQLiteDatabase sqLiteDatabase = mMyDataBaseHelper.getWritableDatabase();
+        Cursor cursor = sqLiteDatabase.query("collection",null,null,null,null,null,null,null);
         List<QCollection> qCollectionList = new ArrayList<>();
         while (cursor.moveToNext()) {
             String _id = cursor.getString(cursor.getColumnIndex("_id"));

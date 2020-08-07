@@ -1,7 +1,9 @@
 package com.xiaosu.interviewapp.ui.adapter.question;
 
 import android.app.Dialog;
+import android.content.ContentValues;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,8 @@ import android.widget.Toast;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.itheima.roundedimageview.RoundedImageView;
 import com.xiaosu.interviewapp.R;
 import com.xiaosu.interviewapp.dao.QCollectionDao;
@@ -30,7 +34,8 @@ import java.util.Objects;
  * Author: Xiaosu
  * Description:
  */
-public class CollectionListViewAdapter extends BaseAdapter{
+public class CollectionListViewAdapter extends BaseAdapter {
+    private static final String TAG = "CollectionListViewAdapt";
     private Dialog mainOperationDialog;
     private Dialog renameDialog;
     private Dialog cleanDialog;
@@ -116,9 +121,9 @@ public class CollectionListViewAdapter extends BaseAdapter{
         //1. 准备Dialog
         mainOperationDialog = new Dialog(mContext);
         //2. 初始化布局
-        CreateDialogUtil createDialogUtil = new CreateDialogUtil(mContext,mainOperationDialog,R.layout.dialog_question_operation_collection,true);
+        CreateDialogUtil createDialogUtil = new CreateDialogUtil(mContext, mainOperationDialog, R.layout.dialog_question_operation_collection, true);
         //3. 设置监听
-        setMainOperationDialogListener(createDialogUtil.getDialogView(),position);
+        setMainOperationDialogListener(createDialogUtil.getDialogView(), position);
     }
 
     /*
@@ -127,7 +132,7 @@ public class CollectionListViewAdapter extends BaseAdapter{
      * method：
      * desc: 设置OperationDialog监听
      */
-    private void setMainOperationDialogListener(View dialogView,final int position) {
+    private void setMainOperationDialogListener(View dialogView, final int position) {
         TextView tv_collectionName = dialogView.findViewById(R.id.tv_collectionName);
         LinearLayout ll_rename = dialogView.findViewById(R.id.ll_rename);
         LinearLayout ll_empty = dialogView.findViewById(R.id.ll_empty);
@@ -137,7 +142,7 @@ public class CollectionListViewAdapter extends BaseAdapter{
         ll_rename.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                initRenameDialogView();//重命名
+                initRenameDialogView(position);//重命名
                 mainOperationDialog.dismiss();
             }
         });
@@ -168,8 +173,8 @@ public class CollectionListViewAdapter extends BaseAdapter{
      */
     private void initCleanDialogView(int position) {
         cleanDialog = new Dialog(Objects.requireNonNull(mContext));
-        CreateDialogUtil createDialogUtil = new CreateDialogUtil(mContext,cleanDialog,R.layout.dialog_question_clean_collection,false);
-        setCleanDialogListener(createDialogUtil.getDialogView(),position);//设置监听
+        CreateDialogUtil createDialogUtil = new CreateDialogUtil(mContext, cleanDialog, R.layout.dialog_question_clean_collection, false);
+        setCleanDialogListener(createDialogUtil.getDialogView(), position);//设置监听
 
     }
 
@@ -179,7 +184,7 @@ public class CollectionListViewAdapter extends BaseAdapter{
      * method：
      * desc: 设置清空对话框监听
      */
-    private void setCleanDialogListener(View dialogView,final int position) {
+    private void setCleanDialogListener(View dialogView, final int position) {
         TextView tv_confirmDelete = dialogView.findViewById(R.id.delete_confirm);
         TextView tv_cancelDelete = dialogView.findViewById(R.id.delete_cancel);
         tv_confirmDelete.setOnClickListener(new View.OnClickListener() {
@@ -217,10 +222,10 @@ public class CollectionListViewAdapter extends BaseAdapter{
      * method：
      * desc: 重命名对话框
      */
-    private void initRenameDialogView() {
+    private void initRenameDialogView(int position) {
         renameDialog = new Dialog(Objects.requireNonNull(mContext));
-        CreateDialogUtil createDialogUtil = new CreateDialogUtil(mContext,renameDialog,R.layout.dialog_question_rename_collection,false);
-        setRenameDialogListener(createDialogUtil.getDialogView());//设置对话框内部按钮监听
+        CreateDialogUtil createDialogUtil = new CreateDialogUtil(mContext, renameDialog, R.layout.dialog_question_rename_collection, false);
+        setRenameDialogListener(createDialogUtil.getDialogView(), position);//设置对话框内部按钮监听
     }
 
     /*
@@ -229,19 +234,23 @@ public class CollectionListViewAdapter extends BaseAdapter{
      * method：
      * desc: 设置重命名对话框监听
      */
-    private void setRenameDialogListener(View view) {
+    private void setRenameDialogListener(View view, final int position) {
         final EditText et_collectionName = view.findViewById(R.id.et_collectionName);
         TextView tv_confirm = view.findViewById(R.id.tv_confirm);
         TextView tv_cancel = view.findViewById(R.id.tv_cancel);
+
         tv_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!"".equals(et_collectionName.getText().toString())) {
+                final String newName = et_collectionName.getText().toString();
+                if (!"".equals(newName)) {
                     //重命名收藏夹
-                    renameCollection();
+                    Log.d(TAG, "setRenameDialogListener: newName ========>" + newName);
+                    renameCollection(position, newName);
                     //关闭对话框
                     renameDialog.dismiss();
                 } else {
+                    Toast.makeText(mContext, mList.get(position).getTitle(), Toast.LENGTH_SHORT).show();
                     Toast.makeText(mContext, "请为收藏夹命名", Toast.LENGTH_SHORT).show();
                 }
 
@@ -261,8 +270,24 @@ public class CollectionListViewAdapter extends BaseAdapter{
      * method：
      * desc: 重命名收藏夹
      */
-    private void renameCollection() {
-
+    private void renameCollection(int position, String newName) {
+        //1. 打开数据库
+        CreateDB createDB = new CreateDB(mContext, "Interview.db");
+        MyDataBaseHelper myDataBaseHelper = createDB.getMyDataBaseHelper();
+        //2. 获取Dao
+        QCollectionDao qCollectionDao = new QCollectionDao(myDataBaseHelper);
+        //3. 准备要更新的数据
+        QCollection qCollection = (QCollection) getItem(position);
+        ContentValues values = new ContentValues();
+        values.put("name", newName);
+        //4. 数据更新
+        qCollectionDao.update(qCollection.get_id(), values);
+        //5. 更新通知
+        mList.clear();
+        mList = new Gson().fromJson(qCollectionDao.query(), new TypeToken<List<QCollection>>() {
+        }.getType());
+        notifyDataSetChanged();
+        Toast.makeText(mContext, "文件夹已重命名", Toast.LENGTH_SHORT).show();
     }
 
     /**********************************************************************************************/
@@ -275,8 +300,8 @@ public class CollectionListViewAdapter extends BaseAdapter{
      */
     private void initDeleteDialogView(int position) {
         deleteDialog = new Dialog(Objects.requireNonNull(mContext));
-        CreateDialogUtil createDialogUtil = new CreateDialogUtil(mContext,deleteDialog,R.layout.dialog_question_delete_collection,false);
-        setDeleteWarnDialogListener(createDialogUtil.getDialogView(), position);
+        CreateDialogUtil createDialogUtil = new CreateDialogUtil(mContext, deleteDialog, R.layout.dialog_question_delete_collection, false);
+        setDeleteDialogListener(createDialogUtil.getDialogView(), position);
     }
 
     /*
@@ -285,7 +310,7 @@ public class CollectionListViewAdapter extends BaseAdapter{
      * method：
      * desc: 设置删除对话框监听
      */
-    private void setDeleteWarnDialogListener(View dialogView, final int position) {
+    private void setDeleteDialogListener(View dialogView, final int position) {
         TextView tv_confirmDelete = dialogView.findViewById(R.id.delete_confirm);
         TextView tv_cancelDelete = dialogView.findViewById(R.id.delete_cancel);
         tv_confirmDelete.setOnClickListener(new View.OnClickListener() {
