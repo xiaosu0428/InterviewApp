@@ -9,7 +9,6 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
-        android:background="#FFFFFF"
         android:gravity="center_vertical"
         android:text="@string/customview_title_default"
         android:textColor="@color/black"

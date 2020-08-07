@@ -28,7 +28,6 @@ import com.xiaosu.interviewapp.ui.activity.question.createmq.CreateMqActivity;
 import com.xiaosu.interviewapp.ui.activity.question.myquestion.MyQuestionActivity;
 import com.xiaosu.interviewapp.ui.activity.question.practice.QuestionPracticeActivity;
 import com.xiaosu.interviewapp.ui.adapter.question.CollectionListViewAdapter;
-import com.xiaosu.interviewapp.ui.customview.TitleView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -44,7 +43,7 @@ public class QuestionFragment extends BaseFragment implements View.OnClickListen
 
     private Dialog mDialog;
 
-    private TitleView mTitleView;
+    //private TitleView mTitleView;
     private TextView tv_myQuestions;//我的问题
     private TextView tv_mySpread;//我的推广
 
@@ -66,7 +65,7 @@ public class QuestionFragment extends BaseFragment implements View.OnClickListen
 
     @Override
     protected void initView(View view) {
-        mTitleView = view.findViewById(R.id.titleView);
+        // mTitleView = view.findViewById(R.id.titleView);
 
         tv_myQuestions = view.findViewById(R.id.tv_myQuestions);
         tv_myQuestions.setOnClickListener(this);

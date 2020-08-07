@@ -15,19 +15,11 @@
         app:isBack="true"
         app:titleText="编辑问题"/>
 
-    <!--标题栏下分割线-->
-    <View
-        android:id="@+id/view_1"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorPrimaryDark"
-        app:layout_constraintTop_toBottomOf="@id/titleView" />
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/view_1">
+        app:layout_constraintTop_toBottomOf="@id/titleView">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
