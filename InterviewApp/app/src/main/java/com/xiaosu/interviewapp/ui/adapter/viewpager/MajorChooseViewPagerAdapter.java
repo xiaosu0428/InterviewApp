@@ -1,4 +1,4 @@
-package com.xiaosu.interviewapp.ui.adapter.question;
+package com.xiaosu.interviewapp.ui.adapter.viewpager;
 
 import android.content.Context;
 

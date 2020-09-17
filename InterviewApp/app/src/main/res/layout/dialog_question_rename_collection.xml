@@ -21,6 +21,8 @@
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_margin="20dp"
+        android:inputType="text"
+        android:maxLines="1"
         android:background="@drawable/shape_login_register_et"
         android:hint="请输入收藏夹名称"
         app:layout_constraintTop_toBottomOf="@id/dialog_title" />

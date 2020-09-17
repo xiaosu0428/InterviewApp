@@ -26,8 +26,8 @@ import com.xiaosu.interviewapp.db.MyDataBaseHelper;
 import com.xiaosu.interviewapp.model.QCollection;
 import com.xiaosu.interviewapp.ui.activity.question.createmq.CreateMqActivity;
 import com.xiaosu.interviewapp.ui.activity.question.myquestion.MyQuestionActivity;
-import com.xiaosu.interviewapp.ui.activity.question.practice.QuestionPracticeActivity;
-import com.xiaosu.interviewapp.ui.adapter.question.CollectionListViewAdapter;
+import com.xiaosu.interviewapp.ui.activity.question.practice.QuestionSelectedActivity;
+import com.xiaosu.interviewapp.ui.adapter.listview.CollectionListViewAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -133,7 +133,7 @@ public class QuestionFragment extends BaseFragment implements View.OnClickListen
                 Toast.makeText(getContext(), "功能暂未开通", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.tv_questionPractice://题库练习
-                intent = new Intent(getContext(), QuestionPracticeActivity.class);
+                intent = new Intent(getContext(), QuestionSelectedActivity.class);
                 startActivity(intent);
                 break;
             case R.id.fab_spread:

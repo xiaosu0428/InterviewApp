@@ -1,4 +1,4 @@
-package com.xiaosu.interviewapp.ui.adapter.question;
+package com.xiaosu.interviewapp.ui.adapter.listview;
 
 import android.app.Dialog;
 import android.content.ContentValues;

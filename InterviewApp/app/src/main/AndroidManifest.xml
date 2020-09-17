@@ -9,9 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activity.question.practice.QuestionPracticeActivity"
-            android:launchMode="singleTask"/>
-        <activity android:name=".ui.activity.question.myquestion.MqItemActivity" />
+        <activity android:name=".ui.activity.question.practice.QuestionSelectedActivity"></activity>
+        <activity android:name=".ui.activity.question.myquestion.WriteMyQuestionActivity" />
+        <activity android:name=".TestActivity" />
+        <activity
+            android:name=".ui.activity.question.practice.QuestionPracticeActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".ui.activity.question.myquestion.MqDetailsActivity" />
         <activity
             android:name=".ui.activity.question.createmq.MajorChooseActivity"
             android:launchMode="singleTask" />

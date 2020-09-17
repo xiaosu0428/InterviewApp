@@ -35,7 +35,7 @@ import java.util.Locale;
  * Author: XiaoSu
  * Desc: 自定义》创建》创建我的问题
  */
-public class CreateMqActivity extends AppCompatActivity implements View.OnClickListener, RadioGroup.OnCheckedChangeListener, TextView.OnEditorActionListener, TitleView.OnClickTitleListener {
+public class CreateMqActivity extends AppCompatActivity implements View.OnClickListener, RadioGroup.OnCheckedChangeListener, TitleView.OnClickTitleListener {
 
     private static final String TAG = "CustomCreateMqActivity";
 
@@ -73,11 +73,10 @@ public class CreateMqActivity extends AppCompatActivity implements View.OnClickL
         tv_mqMajor = findViewById(R.id.tv_mqMajor);
         et_mqContent = findViewById(R.id.et_mqContent);
         //页面标题
-        title.setOnClickTitleListener(this);
+        title.setOnClickTitleListener(this);//返回监听
         //问题标题
         Typeface typeface_wr_vista_ht = Typeface.createFromAsset(getAssets(), "font/wr_vista_ht.ttf");//微软黑体
         et_mqTitle.setTypeface(typeface_wr_vista_ht);
-        et_mqTitle.setOnEditorActionListener(this);
         //问题分类
         rg_mqType.setOnCheckedChangeListener(this);
         //问题专业
@@ -96,7 +95,7 @@ public class CreateMqActivity extends AppCompatActivity implements View.OnClickL
             String subject = sharedPreferences.getString("mqSubject", "");
             String major = sharedPreferences.getString("mqMajor", "");
             String content = sharedPreferences.getString("mqContent", "");
-            if(!"".equals(title)){
+            if (!"".equals(title)) {
                 et_mqTitle.setText(title);
             }
             if ("专业".equals(type)) {
@@ -234,19 +233,20 @@ public class CreateMqActivity extends AppCompatActivity implements View.OnClickL
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         switch (checkedId) {
             case R.id.rb_science:
+                MQ_TYPE = 1;
                 rb_text = rb_science.getText().toString();
+                Log.d(TAG, "onCheckedChanged: "+ rb_text);
                 break;
             case R.id.rb_speciality:
                 MQ_TYPE = 2;
                 rb_text = rb_speciality.getText().toString();
+                Log.d(TAG, "onCheckedChanged: "+ rb_text);
+                break;
+            default:
                 break;
         }
     }
 
-    @Override
-    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-        return (event.getKeyCode() == KeyEvent.KEYCODE_ENTER);
-    }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

@@ -10,7 +10,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.xiaosu.interviewapp.R;
-import com.xiaosu.interviewapp.ui.adapter.question.MajorChooseViewPagerAdapter;
+import com.xiaosu.interviewapp.ui.adapter.viewpager.MajorChooseViewPagerAdapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;

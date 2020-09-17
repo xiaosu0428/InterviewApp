@@ -1,4 +1,4 @@
-package com.xiaosu.interviewapp.ui.adapter.category;
+package com.xiaosu.interviewapp.ui.adapter.expandablelistview;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -72,7 +72,7 @@ public class CategorySubjectExListViewAdapter extends BaseExpandableListAdapter 
 
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-        View view = mLayoutInflater.inflate(R.layout.item_elv_group,null);
+        View view = mLayoutInflater.inflate(R.layout.item_elv_group_subject,null);
         TextView tv_elvGroup = view.findViewById(R.id.tv_elvGroup);
         Typeface typeface_fs = Typeface.createFromAsset(mContext.getAssets(),"font/fs.ttf");
         tv_elvGroup.setTypeface(typeface_fs);
@@ -82,7 +82,7 @@ public class CategorySubjectExListViewAdapter extends BaseExpandableListAdapter 
 
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-        View view = mLayoutInflater.inflate(R.layout.item_elv_child,null);
+        View view = mLayoutInflater.inflate(R.layout.item_elv_child_subject,null);
         TextView tv_elvChild = view.findViewById(R.id.tv_elvChild);
         Typeface typeface_fs = Typeface.createFromAsset(mContext.getAssets(),"font/fs.ttf");
         tv_elvChild.setTypeface(typeface_fs);

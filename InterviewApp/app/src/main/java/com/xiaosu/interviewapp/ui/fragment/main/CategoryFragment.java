@@ -7,7 +7,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 import com.xiaosu.interviewapp.R;
 import com.xiaosu.interviewapp.base.BaseFragment;
-import com.xiaosu.interviewapp.ui.adapter.category.CategoryViwPagerAdapter;
+import com.xiaosu.interviewapp.ui.adapter.viewpager.CategoryViwPagerAdapter;
 
 public class CategoryFragment extends BaseFragment {
     private CategoryViwPagerAdapter mCategoryViwPagerAdapter;

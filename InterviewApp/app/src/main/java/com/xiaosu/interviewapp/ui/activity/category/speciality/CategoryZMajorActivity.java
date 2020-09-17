@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.xiaosu.interviewapp.R;
 import com.xiaosu.interviewapp.ui.activity.category.science.CategoryXSubject;
-import com.xiaosu.interviewapp.ui.adapter.category.CategorySubjectExListViewAdapter;
+import com.xiaosu.interviewapp.ui.adapter.expandablelistview.CategorySubjectExListViewAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

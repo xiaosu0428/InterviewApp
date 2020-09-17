@@ -1,4 +1,49 @@
 <resources>
+    <string name="test">
+  最近忙完了学校的事情，终于又成功的跑去公司上班了(还好公司没有嫌弃我菜😂😂)。在学校废了半年多，感觉好多东西都不太会了，所以觉得自己应该找点事情来做，于是选中学习CoordinatorLayout。其实在昨年，我就对CoordinatorLayout进行了简单的学习，不过当时学习的重点放在了嵌套滑动，从而未对CoordinatorLayout进行深入和系统的学习，这个也算是昨年留下的一个遗憾。因此，我觉得还是应该弥补一下。
+  楼主写一个系列文章来详细的介绍CoordinatorLayout，分别会介绍它的基本使用，Behavior的原理解析以及自定义，最后就是CoordinatorLayout的扩展，这部分的内容不固定，篇幅也不固定。
+CoordinatorLayout使用详解: 打造折叠悬浮效果
+1. 概述
+  作为本系列文章第一篇文章，我觉得还是有必要简单介绍一下CoordinatorLayout。
+  CoordinatorLayout顾名思义，协调者布局。所谓的协调者布局，它主要是协调谁，协调啥呢？我相信大家在学这个布局时，都会思考这两个问题。其实说的简单点，协调者布局主要协调child之间的联动。请注意我的措辞，child之间的联动。
+  可能有的同学对联动还是有点陌生，我简单的举一个例子，比如说，我们在滑动一个RecyclerView,存在一个View需要在RecyclerView滑动时做相应的动作，例如，位移变化，缩放变化等等。我相信这种场景还是非常常见的吧。这种场景就可以称之为child之间联动。
+  而CoordinatorLayout是怎么进行协调呢？主要依靠一个插件--Behavior。在CoordinatorLayout内部，每个child都必须带一个Behavior（其实不携带也行，不携带就不能被协调），CoordinatorLayout就根据每个child所携带的Behavior信息进行协调。
+  这里还需要提一句的是，Behavior不仅仅协助联动，而且还是接管了child的三大流程，有点类似于RecyclerView的LayoutManager。
+  而Behavior是怎么进行协助联动呢？这就涉及到嵌套滑动的相关知识，总的来说，Behavior包括整个CoordinatorLayout体系就是对嵌套滑动的应用和实现。所以，我们便知道了，嵌套滑动到底有多么重要了。
+  本文主要介绍CoordinatorLayout的基本使用，主要是介绍CoordinatorLayout与AppBarLayout的搭配使用。
+
+2. AppBarLayout
+  如果我们想要实现折叠的ActionBar效果，在CoordinatorLayout中，AppBarLayout绝对是作为首选的控件。
+  在正式介绍AppBarLayout的使用时，我们先来看看几个Flag，这几个Flag在AppBarLayout里面非常的重要。
+
+  这里需要几点，如下：
+
+我在AppBarLayout里面放了两个View，其中一个设置scrollFlags，一个没有设置。没有设置的是不会折叠的。
+在这里，AppBarLayout并没有设置Behavior,而RecyclerView却设置了的。我统一的解释一下，在CoordinatorLayout内部，理论上每个View必须携带一个Behavior,而这里AppBarLayout没有携带是因为它本身就有，所以不需要申明(在后面，我们会看到几种设置Behavior的方式，这里买一个关子。)
+  然后，我们来看看效果：
+
+
+
+  这里，我不再介绍其他Flag的效果，有兴趣可以尝试一下。
+
+3. CollapsingToolbarLayout
+  接下来，我们再来看一下CollapsingToolbarLayout。CollapsingToolbarLayout主要是实现折叠布局的，我们来看看是怎么使用的。首先，我们来看看CollapsingToolbarLayout的几个Flag：
+
+名称	值	作用
+COLLAPSE_MODE_OFF	0	默认值，表示View不会有任何属性
+COLLAPSE_MODE_PIN	1	当CollapsingToolbarLayout完全收缩之后，设置该Flag的View会保留在屏幕当中。
+COLLAPSE_MODE_PARALLAX	2	设置该Flag的View会跟内容滚动，可以通过setParallaxMultiplier方法来设置视图差比率，其中0表示毫无视图差，完全跟内容滚动同步；1表示View完全不动。默认的视图差为0.5。
+  接下来我们看一个Demo：
+
+  使用CollapsingToolbarLayout时，我们需要注意的是：CollapsingToolbarLayout需要作为AppBarLayout子View。然后我们来看看相关的效果：
+
+4. 总结
+  本文主要介绍CoordinatorLayout的基本使用，还是非常简单的，但是我们从上面的代码看出，好像根本就没有介绍它。CoordinatorLayout作为协调者，肯定是非常重要的，具体介绍在后续的文章会详细的分析。在这里先对本文做一个简单的总结。
+使用AppBarLayout时，我们需要注意4种flag的不同点。
+CollapsingToolbarLayout需要作为AppBarLayout的子View才会有效，同时还需要注意它的3种flag。
+  如果不出意外的话，下一篇文章我们将分析RecyclerView和AppBarLayout的联动。
+</string>
+
     <!-- ***************************** 1.应用程序 *****************************************-->
     <string name="app_name">面试通</string>
 

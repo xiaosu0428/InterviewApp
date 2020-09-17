@@ -29,13 +29,15 @@ public class MyQuestionDao implements Dao {
     @Override
     public void delete(String _id) {
         SQLiteDatabase sqLiteDatabase = mMyDataBaseHelper.getWritableDatabase();//打开数据库
-        sqLiteDatabase.delete("my_question","_id=?",new String[]{_id});
+        sqLiteDatabase.delete("my_question", "_id=?", new String[]{_id});
         sqLiteDatabase.close();
     }
 
     @Override
     public void update(String _id, ContentValues values) {
         SQLiteDatabase sqLiteDatabase = mMyDataBaseHelper.getWritableDatabase();//打开数据库
+        sqLiteDatabase.update("my_question",values,"_id = ?",new String[]{_id});
+        sqLiteDatabase.close();
 
     }
 
@@ -53,7 +55,7 @@ public class MyQuestionDao implements Dao {
             String major = cursor.getString(cursor.getColumnIndex("major"));
             String content = cursor.getString(cursor.getColumnIndex("content"));
             String time = cursor.getString(cursor.getColumnIndex("time"));
-            MyQuestion myQuestion= new MyQuestion(_id,title,type,category,subject,major,content,time);
+            MyQuestion myQuestion = new MyQuestion(_id, title, type, category, subject, major, content, time);
             myQuestionList.add(myQuestion);
         }
         cursor.close();
@@ -61,8 +63,29 @@ public class MyQuestionDao implements Dao {
     }
 
     @Override
-    public String  select(String _id) {
+    public String select(String _id) {
         SQLiteDatabase sqLiteDatabase = mMyDataBaseHelper.getWritableDatabase();//打开数据库
         return null;
     }
+
+    public String search(String where) {
+        SQLiteDatabase sqLiteDatabase = mMyDataBaseHelper.getWritableDatabase();//打开数据库
+        Cursor cursor = sqLiteDatabase.rawQuery("select * from my_question where title LIKE ?", new String[]{"%" + where + "%"});
+        List<MyQuestion> myQuestionList = new ArrayList<>(0);
+        while (cursor.moveToNext()) {
+            String _id = cursor.getString(cursor.getColumnIndex("_id"));
+            String title = cursor.getString(cursor.getColumnIndex("title"));
+            String type = cursor.getString(cursor.getColumnIndex("type"));
+            String category = cursor.getString(cursor.getColumnIndex("category"));
+            String subject = cursor.getString(cursor.getColumnIndex("subject"));
+            String major = cursor.getString(cursor.getColumnIndex("major"));
+            String content = cursor.getString(cursor.getColumnIndex("content"));
+            String time = cursor.getString(cursor.getColumnIndex("time"));
+            MyQuestion myQuestion = new MyQuestion(_id, title, type, category, subject, major, content, time);
+            myQuestionList.add(myQuestion);
+        }
+        cursor.close();
+        return new Gson().toJson(myQuestionList);
+    }
+
 }

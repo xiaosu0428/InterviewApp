@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.question.myquestion.WriteMyQuestionActivity">
+    <!-- 标题栏-->
+    <com.xiaosu.interviewapp.ui.customview.TitleView
+        android:id="@+id/titleView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:isBack="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleText="编辑问题" />
+
+    <!--1.题目-->
+    <EditText
+        android:id="@+id/editText_questionTitle"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_margin="5dp"
+        android:background="#FFFFFF"
+        android:gravity="center_vertical"
+        android:hint="请输入标题 最多100个字"
+        android:maxLength="100"
+        android:maxLines="1"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/titleView"/>
+
+    <!-- 题目内容分割线-->
+    <View
+        android:id="@+id/view_line"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@drawable/shape_createmq_virtue_line"
+        android:layerType="software"
+        app:layout_constraintTop_toBottomOf="@id/editText_questionTitle" />
+
+    <!--2.分类-->
+    <RadioGroup
+        android:id="@+id/radioGroup_questionType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_line">
+
+        <RadioButton
+            android:id="@+id/radioButton_science"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:checked="true"
+            android:padding="10dp"
+            android:text="学术" />
+
+        <RadioButton
+            android:id="@+id/radioButton_speciality"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="10dp"
+            android:text="专业" />
+
+    </RadioGroup>
+
+    <!--3.专业-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_mqMajor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/radioGroup_questionType">
+
+
+        <TextView
+            android:id="@+id/textView_questionMajor"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:hint="请选择所学专业"
+            android:paddingStart="15dp"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageButton
+            android:id="@+id/imageButton_goto"
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"
+            android:layout_gravity="end"
+            android:background="@color/white"
+            android:contentDescription="@string/contentDescription"
+            android:src="@mipmap/ic_tip_right"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--专业内容分割线-->
+    <View
+        android:id="@+id/view_line_2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintTop_toBottomOf="@id/cl_mqMajor" />
+
+    <!--4. 内容-->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/button_save"
+        app:layout_constraintTop_toBottomOf="@id/view_line_2">
+
+        <EditText
+            android:id="@+id/editText_questionContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="请编辑..."
+            android:background="#FFFFFF"
+            android:gravity="start"
+            android:hint="请编辑..."
+            android:inputType="text"
+            android:padding="15dp"
+            android:textSize="13sp" />
+    </androidx.core.widget.NestedScrollView>
+
+    <Button
+        android:id="@+id/button_save"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_margin="15dp"
+        android:background="@drawable/shape_createmq_confirm_btn"
+        android:text="保存"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

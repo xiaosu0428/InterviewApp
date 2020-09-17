@@ -1,4 +1,4 @@
-package com.xiaosu.interviewapp.ui.adapter.category;
+package com.xiaosu.interviewapp.ui.adapter.viewpager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
